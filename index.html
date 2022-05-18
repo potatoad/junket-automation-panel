@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title> EXTENSION_NAME </title>
-		<link id="myStyle" rel="stylesheet" href="css/style.css"/>
 
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title> Junket Skinning Automation </title>
+	<link id="myStyle" rel="stylesheet" href="css/style.css" />
 
-	<body id="body">
+</head>
+
+<body>
+
+	<h3>Import</h3>
+	<button id="button1">Import Skin</button>
+
+	<h3>Comp</h3>
+	<p>Left Window<br />
+	x: <input type="text" id="xL"><br />
+	y: <input type="text" id="yL"><br />
+	scale: <input type="text" id="sL"></p>
+	<p>Right Window<br />
+	x: <input type="text" id="xR"><br />
+	y: <input type="text" id="yR"><br />
+	scale: <input type="text" id="sR"></p>
+	<button id="button2">Comp It</button>
+
+	<h3>Render</h3>
+	<button id="button3">Render It</button>
+
 
 	<script src="./lib/CSInterface.js"></script>
 	<script src="./js/themeManager.js"></script>
-	<script src="./js/main.js"></script>		     
-	</body>
+	<script src="./js/main.js"></script>
+</body>
+
 </html>
