@@ -10,22 +10,148 @@
 
 <body>
 
-	<h3>Import</h3>
-	<button id="button1">Import Skin</button>
+	<h2>Import</h2>
+	<button id="btn-import-1">Import Solo Wrap</button>
+	<button id="btn-import-2">Import Duo Wrap</button>
+	<button id="btn-import-3">Import Trio Wrap</button>
+	<button id="btn-import-4">Import Quad Wrap</button>
 
-	<h3>Comp</h3>
-	<p>Left Window<br />
-	x: <input type="text" id="xL"><br />
-	y: <input type="text" id="yL"><br />
-	scale: <input type="text" id="sL"></p>
-	<p>Right Window<br />
-	x: <input type="text" id="xR"><br />
-	y: <input type="text" id="yR"><br />
-	scale: <input type="text" id="sR"></p>
-	<button id="button2">Comp It</button>
+	<h2>Comp</h2>
 
-	<h3>Render</h3>
-	<button id="button3">Render It</button>
+	<div class="w3-bar w3-black">
+		<button data-number="1" class="w3-bar-item w3-button tab-link tab-selected" onclick="openTab(event, 'solo')">Solo</button>
+		<button data-number="2" class="w3-bar-item w3-button tab-link" onclick="openTab(event, 'duo')">Duo</button>
+		<button data-number="3" class="w3-bar-item w3-button tab-link" onclick="openTab(event, 'trio')">Trio</button>
+		<button data-number="4" class="w3-bar-item w3-button tab-link" onclick="openTab(event, 'quad')">Quad</button>
+	</div>
+
+	<div id="solo" class="comp-tab">
+		<div class="container">
+			<div class="window-1 window-title"><h3>Window 1</h3></div>
+
+			<!-- ONE -->
+			<div class="x1-label label">X</div>
+			<div class="x1-input"><input type="text" id="x-1-1"></div>
+			<div class="y1-label label">Y</div>
+			<div class="y1-input"><input type="text" id="y-1-1"></div>
+			<div class="s1-label label">Scale</div>
+			<div class="s1-input"><input type="text" id="s-1-1"></div>
+
+			<div class="spacer-1"></div>
+		</div>
+	</div>
+
+	<div id="duo" class="comp-tab" style="display:none">
+		<div class="container">
+			<div class="window-1 window-title"><h3>Window 1</h3></div>
+			<div class="window-2 window-title"><h3>Window 2</h3></div>
+
+			<!-- ONE -->
+			<div class="x1-label label">X</div>
+			<div class="x1-input"><input type="text" id="x-2-1"></div>
+			<div class="y1-label label">Y</div>
+			<div class="y1-input"><input type="text" id="y-2-1"></div>
+			<div class="s1-label label">Scale</div>
+			<div class="s1-input"><input type="text" id="s-2-1"></div>
+			<!-- TWO -->
+			<div class="x2-label label">X</div>
+			<div class="x2-input"><input type="text" id="x-2-2"></div>
+			<div class="y2-label label">Y</div>
+			<div class="y2-input"><input type="text" id="y-2-2"></div>
+			<div class="s2-label label">Scale</div>
+			<div class="s2-input"><input type="text" id="s-2-2"></div>
+
+			<div class="spacer-1"></div>
+			<div class="spacer-2"></div>
+		</div>
+	</div>
+
+	<div id="trio" class="comp-tab" style="display:none">
+		<div class="container">
+			<div class="window-1 window-title"><h3>Window 1</h3></div>
+			<div class="window-2 window-title"><h3>Window 2</h3></div>
+			<div class="window-3 window-title"><h3>Window 3</h3></div>
+
+			<!-- ONE -->
+			<div class="x1-label label">X</div>
+			<div class="x1-input"><input type="text" id="x-3-1"></div>
+			<div class="y1-label label">Y</div>
+			<div class="y1-input"><input type="text" id="y-3-1"></div>
+			<div class="s1-label label">Scale</div>
+			<div class="s1-input"><input type="text" id="s-3-1"></div>
+			<!-- TWO -->
+			<div class="x2-label label">X</div>
+			<div class="x2-input"><input type="text" id="x-3-2"></div>
+			<div class="y2-label label">Y</div>
+			<div class="y2-input"><input type="text" id="y-3-2"></div>
+			<div class="s2-label label">Scale</div>
+			<div class="s2-input"><input type="text" id="s-3-2"></div>
+			<!-- THREE -->
+			<div class="x3-label label">X</div>
+			<div class="x3-input"><input type="text" id="x-3-3"></div>
+			<div class="y3-label label">Y</div>
+			<div class="y3-input"><input type="text" id="y-3-3"></div>
+			<div class="s3-label label">Scale</div>
+			<div class="s3-input"><input type="text" id="s-3-3"></div>
+
+			<div class="spacer-1"></div>
+			<div class="spacer-2"></div>
+			<div class="spacer-3"></div>
+		</div>
+	</div>
+
+	<div id="quad" class="comp-tab" style="display:none">
+		<div class="container">
+			<div class="window-1 window-title"><h3>Window 1</h3></div>
+			<div class="window-2 window-title"><h3>Window 2</h3></div>
+			<div class="window-3 window-title"><h3>Window 3</h3></div>
+			<div class="window-4 window-title"><h3>Window 4</h3></div>
+
+			<!-- ONE -->
+			<div class="x1-label label">X</div>
+			<div class="x1-input"><input type="text" id="x-4-1"></div>
+			<div class="y1-label label">Y</div>
+			<div class="y1-input"><input type="text" id="y-4-1"></div>
+			<div class="s1-label label">Scale</div>
+			<div class="s1-input"><input type="text" id="s-4-1"></div>
+			<!-- TWO -->
+			<div class="x2-label label">X</div>
+			<div class="x2-input"><input type="text" id="x-4-2"></div>
+			<div class="y2-label label">Y</div>
+			<div class="y2-input"><input type="text" id="y-4-2"></div>
+			<div class="s2-label label">Scale</div>
+			<div class="s2-input"><input type="text" id="s-4-2"></div>
+			<!-- THREE -->
+			<div class="x3-label label">X</div>
+			<div class="x3-input"><input type="text" id="x-4-3"></div>
+			<div class="y3-label label">Y</div>
+			<div class="y3-input"><input type="text" id="y-4-3"></div>
+			<div class="s3-label label">Scale</div>
+			<div class="s3-input"><input type="text" id="s-4-3"></div>
+			<!-- FOUR -->
+			<div class="x4-label label">X</div>
+			<div class="x4-input"><input type="text" id="x-4-4"></div>
+			<div class="y4-label label">Y</div>
+			<div class="y4-input"><input type="text" id="y-4-4"></div>
+			<div class="s4-label label">Scale</div>
+			<div class="s4-input"><input type="text" id="s-4-4"></div>
+
+			<div class="spacer-1"></div>
+			<div class="spacer-2"></div>
+			<div class="spacer-3"></div>
+			<div class="spacer-4"></div>
+		</div>
+	</div>
+
+	<p><button id="btn-comp">Comp It</button></p>
+
+	<h2>Render</h2>
+	<p>
+		<button id="button3">Render It</button>
+		<button id="button4">Render It 2</button>
+	</p>
+
+	<p><button id="btn-clear-cache">Clear Cache</button></p>
 
 
 	<script src="./lib/CSInterface.js"></script>

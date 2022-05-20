@@ -1,3 +1,174 @@
 :root {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.tab-selected {
+  font-weight: bold;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 3fr;
+  /* grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+  gap: 0.25em 0.25em;
+  width: min-content;
+  height: min-content;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'spacer-1 window-1 spacer-2 window-2'
+    'x1-label x1-input x2-label x2-input'
+    'y1-label y1-input y2-label y2-input'
+    's1-label s1-input s2-label s2-input'
+    'spacer-3 window-3 spacer-4 window-4'
+    'x3-label x3-input x4-label x4-input'
+    'y3-label y3-input y4-label y4-input'
+    's3-label s3-input s4-label s4-input';
+}
+
+/* TITLES */
+
+.window-1 {
+  grid-area: window-1;
+}
+
+.window-2 {
+  grid-area: window-2;
+}
+
+.window-3 {
+  grid-area: window-3;
+}
+
+.window-4 {
+  grid-area: window-4;
+}
+
+.window-title {
+  text-align: center;
+}
+
+.label {
+  text-align: right;
+}
+
+/* ONE */
+
+.x1-label {
+  grid-area: x1-label;
+}
+
+.x1-input {
+  grid-area: x1-input;
+}
+
+.y1-label {
+  grid-area: y1-label;
+}
+
+.y1-input {
+  grid-area: y1-input;
+}
+
+.s1-label {
+  grid-area: s1-label;
+}
+
+.s1-input {
+  grid-area: s1-input;
+}
+
+/* TWO */
+
+.x2-label {
+  grid-area: x2-label;
+}
+
+.x2-input {
+  grid-area: x2-input;
+}
+
+.y2-label {
+  grid-area: y2-label;
+}
+
+.y2-input {
+  grid-area: y2-input;
+}
+
+.s2-label {
+  grid-area: s2-label;
+}
+
+.s2-input {
+  grid-area: s2-input;
+}
+
+/* THREE */
+
+.x3-label {
+  grid-area: x3-label;
+}
+
+.x3-input {
+  grid-area: x3-input;
+}
+
+.y3-label {
+  grid-area: y3-label;
+}
+
+.y3-input {
+  grid-area: y3-input;
+}
+
+.s3-label {
+  grid-area: s3-label;
+}
+
+.s3-input {
+  grid-area: s3-input;
+}
+
+/* FOUR */
+
+.x4-label {
+  grid-area: x4-label;
+}
+
+.x4-input {
+  grid-area: x4-input;
+}
+
+.y4-label {
+  grid-area: y4-label;
+}
+
+.y4-input {
+  grid-area: y4-input;
+}
+
+.s4-label {
+  grid-area: s4-label;
+}
+
+.s4-input {
+  grid-area: s4-input;
+}
+
+/* SPACERS */
+
+.spacer-1 {
+  grid-area: spacer-1;
+}
+
+.spacer-2 {
+  grid-area: spacer-2;
+}
+
+.spacer-3 {
+  grid-area: spacer-3;
+}
+
+.spacer-4 {
+  grid-area: spacer-4;
+}
