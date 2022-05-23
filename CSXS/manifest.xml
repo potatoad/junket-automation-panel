@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="6.0" ExtensionBundleId="com.pmafilmtv.junketAutomationPanel" ExtensionBundleVersion="1.0.0" ExtensionBundleName="com.pmafilmtv.junketAutomationPanel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest Version="6.0" ExtensionBundleId="com.pmafilmtv.junketAutomationPanel" ExtensionBundleVersion="1.1.0" ExtensionBundleName="com.pmafilmtv.junketAutomationPanel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="com.pmafilmtv.junketAutomationPanel" Version="1.1" />
+		<Extension Id="com.pmafilmtv.junketAutomationPanel" Version="1.1.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
