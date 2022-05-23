@@ -1,7 +1,6 @@
 app.enableQE()
 
 function importSkin(n) {
-    // alert('');
     var folderExists = false;
     var skinNames = ['01_SOLO', '02_DUO', '03_TRIO', '04_QUAD'];
     var skinBin;
@@ -17,9 +16,7 @@ function importSkin(n) {
                 skinBin = app.project.rootItem.children[i];
             }
         }
-        if (folderExists) {
-            alert('Folder Exists!', 'Folder Exists', true);
-        } else {
+        if (!folderExists) {
             skinBin = app.project.rootItem.createBin(skinBinName);
         }
 
@@ -29,6 +26,26 @@ function importSkin(n) {
         alert('Error importing skin', 'Error', true);
     }
 
+}
+
+function importBug() {
+    var folderExists = false;
+    var bugBin;
+    var bugBinName = '##_BUG';
+    var bugFile = [];
+
+    for (i = 0; i < app.project.rootItem.children.numItems; i++) {
+
+        if (app.project.rootItem.children[i].name == bugBinName && app.project.rootItem.children[i].type == 2) {
+            folderExists = true;
+            bugBin = app.project.rootItem.children[i];
+        }
+    }
+    if (!folderExists) {
+        bugBin = app.project.rootItem.createBin(bugBinName);
+    }
+    bugFile.push(File.openDialog('Select the bug file...', '*.png').fsName);
+    app.project.importFiles(bugFile, 0, bugBin, 0);
 }
 
 function addVideoTracks(n) {
@@ -43,31 +60,31 @@ function addAudioTracks(n) {
     qeSequence.addTracks(0, 0, n, 1, activeSeq.audioTracks.numTracks);
 }
 
+function moveAndScale(clip, frameSize, x, y, s) {
+    var pos = clip.components[1].properties[0];
+    var scale = clip.components[1].properties[1];
+
+    pos.setValue([x / frameSize[0], y / frameSize[1]]);
+    scale.setValue(s);
+}
+
+function findSkin(regex) {
+    for (var i = 0; i < app.project.rootItem.children.numItems; i++) {
+        var itemName = app.project.rootItem.children[i].name;
+        if (itemName.match(regex)) {
+            return app.project.rootItem.children[i].children[0];
+        }
+    }
+}
+
 function composite(numberOfWindows, positionArray) {
     var activeSeq = app.project.activeSequence;
-    var qeSequence = qe.project.getActiveSequence(0);
+    // var qeSequence = qe.project.getActiveSequence(0);
     var frameSize = [activeSeq.frameSizeHorizontal, activeSeq.frameSizeVertical];
     var numVideoTracks = activeSeq.videoTracks.numTracks;
     var numAudioTracks = activeSeq.audioTracks.numTracks;
     var videoTrack0 = activeSeq.videoTracks[0];
     var audioTrack0 = activeSeq.audioTracks[0];
-
-    function moveAndScale(clip, x, y, s) {
-        var pos = clip.components[1].properties[0];
-        var scale = clip.components[1].properties[1];
-
-        pos.setValue([x / frameSize[0], y / frameSize[1]]);
-        scale.setValue(s);
-    }
-
-    function findSkin(regex) {
-        for (var i = 0; i < app.project.rootItem.children.numItems; i++) {
-            var itemName = app.project.rootItem.children[i].name;
-            if (itemName.match(regex)) {
-                return app.project.rootItem.children[i].children[0];
-            }
-        }
-    }
 
     switch (numberOfWindows) {
         case 1:
@@ -172,22 +189,22 @@ function composite(numberOfWindows, positionArray) {
 
     switch (numberOfWindows) {
         case 1:
-            moveAndScale(activeSeq.videoTracks[0].clips[0], parseInt(positionArray['x_1_1']), parseInt(positionArray['y_1_1']), parseInt(positionArray['s_1_1']));
+            moveAndScale(activeSeq.videoTracks[0].clips[0], frameSize, parseInt(positionArray['x_1_1']), parseInt(positionArray['y_1_1']), parseInt(positionArray['s_1_1']));
             break;
         case 2:
-            moveAndScale(activeSeq.videoTracks[0].clips[0], parseInt(positionArray['x_2_1']), parseInt(positionArray['y_2_1']), parseInt(positionArray['s_2_1']));
-            moveAndScale(activeSeq.videoTracks[1].clips[0], parseInt(positionArray['x_2_2']), parseInt(positionArray['y_2_2']), parseInt(positionArray['s_2_2']));
+            moveAndScale(activeSeq.videoTracks[0].clips[0], frameSize, parseInt(positionArray['x_2_1']), parseInt(positionArray['y_2_1']), parseInt(positionArray['s_2_1']));
+            moveAndScale(activeSeq.videoTracks[1].clips[0], frameSize, parseInt(positionArray['x_2_2']), parseInt(positionArray['y_2_2']), parseInt(positionArray['s_2_2']));
             break;
         case 3:
-            moveAndScale(activeSeq.videoTracks[0].clips[0], parseInt(positionArray['x_3_1']), parseInt(positionArray['y_3_1']), parseInt(positionArray['s_3_1']));
-            moveAndScale(activeSeq.videoTracks[1].clips[0], parseInt(positionArray['x_3_2']), parseInt(positionArray['y_3_2']), parseInt(positionArray['s_3_2']));
-            moveAndScale(activeSeq.videoTracks[2].clips[0], parseInt(positionArray['x_3_3']), parseInt(positionArray['y_3_3']), parseInt(positionArray['s_3_3']));
+            moveAndScale(activeSeq.videoTracks[0].clips[0], frameSize, parseInt(positionArray['x_3_1']), parseInt(positionArray['y_3_1']), parseInt(positionArray['s_3_1']));
+            moveAndScale(activeSeq.videoTracks[1].clips[0], frameSize, parseInt(positionArray['x_3_2']), parseInt(positionArray['y_3_2']), parseInt(positionArray['s_3_2']));
+            moveAndScale(activeSeq.videoTracks[2].clips[0], frameSize, parseInt(positionArray['x_3_3']), parseInt(positionArray['y_3_3']), parseInt(positionArray['s_3_3']));
             break;
         case 4:
-            moveAndScale(activeSeq.videoTracks[0].clips[0], parseInt(positionArray['x_4_1']), parseInt(positionArray['y_4_1']), parseInt(positionArray['s_4_1']));
-            moveAndScale(activeSeq.videoTracks[1].clips[0], parseInt(positionArray['x_4_2']), parseInt(positionArray['y_4_2']), parseInt(positionArray['s_4_2']));
-            moveAndScale(activeSeq.videoTracks[2].clips[0], parseInt(positionArray['x_4_3']), parseInt(positionArray['y_4_3']), parseInt(positionArray['s_4_3']));
-            moveAndScale(activeSeq.videoTracks[3].clips[0], parseInt(positionArray['x_4_4']), parseInt(positionArray['y_4_4']), parseInt(positionArray['s_4_4']));
+            moveAndScale(activeSeq.videoTracks[0].clips[0], frameSize, parseInt(positionArray['x_4_1']), parseInt(positionArray['y_4_1']), parseInt(positionArray['s_4_1']));
+            moveAndScale(activeSeq.videoTracks[1].clips[0], frameSize, parseInt(positionArray['x_4_2']), parseInt(positionArray['y_4_2']), parseInt(positionArray['s_4_2']));
+            moveAndScale(activeSeq.videoTracks[2].clips[0], frameSize, parseInt(positionArray['x_4_3']), parseInt(positionArray['y_4_3']), parseInt(positionArray['s_4_3']));
+            moveAndScale(activeSeq.videoTracks[3].clips[0], frameSize, parseInt(positionArray['x_4_4']), parseInt(positionArray['y_4_4']), parseInt(positionArray['s_4_4']));
             break;
         default:
             alert('Unsupported number of windows', 'Error', true);
@@ -197,14 +214,6 @@ function composite(numberOfWindows, positionArray) {
     var skin;
     var end = activeSeq.end;
 
-    function findSkin(regex) {
-        for (var i = 0; i < app.project.rootItem.children.numItems; i++) {
-            var itemName = app.project.rootItem.children[i].name;
-            if (itemName.match(regex)) {
-                return app.project.rootItem.children[i].children[0];
-            }
-        }
-    }
 
     switch (numberOfWindows) {
         case 1:
@@ -236,4 +245,32 @@ function composite(numberOfWindows, positionArray) {
     }
 
     alert('Compositing complete!\nMake sure to check it\'s in sync!', 'Junket Skinning Automation');
+}
+
+function bug(positionArray) {
+    var activeSeq = app.project.activeSequence;
+    // var qeSequence = qe.project.getActiveSequence(0);
+    var frameSize = [activeSeq.frameSizeHorizontal, activeSeq.frameSizeVertical];
+    var numVideoTracks = activeSeq.videoTracks.numTracks;
+    var bugTrack;
+
+    addVideoTracks(1);
+
+    bugTrack = activeSeq.videoTracks[numVideoTracks];
+
+    var regex;
+    var bug;
+    var end = activeSeq.end;
+
+    regex = /(##_BUG)/g;
+    bug = findSkin(regex);
+
+    if (bug) {
+        bug.setOutPoint(end, 4);
+        bugTrack.overwriteClip(bug, 0);
+        moveAndScale(bugTrack.clips[0], frameSize, parseInt(positionArray['x_bug']), parseInt(positionArray['y_bug']), parseInt(positionArray['s_bug']));
+    } else {
+        alert('Bug not found', 'Bug Not Found', true);
+        return;
+    }
 }

@@ -23,6 +23,11 @@
     cs.evalScript('importSkin(4)')
   })
 
+  document.getElementById('btn-import-bug').addEventListener('click', (e) => {
+    e.preventDefault()
+    cs.evalScript('importBug()')
+  })
+
   document.getElementById('btn-comp').addEventListener('click', (e) => {
     e.preventDefault()
     var tabSelected =
@@ -36,7 +41,12 @@
       var newId = id.replace(re, '_')
       positionArray[newId] = value
     })
-    var script = 'composite('+tabSelected+', '+JSON.stringify(positionArray)+')'
+    var script;
+    if(tabSelected === 'bug'){
+      var script = 'bug('+JSON.stringify(positionArray)+')'
+    }else{
+      var script = 'composite('+tabSelected+', '+JSON.stringify(positionArray)+')'
+    }
     console.log(script)
     cs.evalScript(script)
   })
@@ -88,6 +98,9 @@ compInputIds = [
   'x-4-4',
   'y-4-4',
   's-4-4',
+  'x-bug',
+  'y-bug',
+  's-bug'
 ]
 
 compInputIds.forEach((id) => {
