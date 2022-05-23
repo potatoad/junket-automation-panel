@@ -273,4 +273,5 @@ function bug(positionArray) {
         alert('Bug not found', 'Bug Not Found', true);
         return;
     }
+    alert('Bugging complete!', 'Junket Skinning Automation');
 }
