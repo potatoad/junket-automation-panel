@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExtensionManifest Version="6.0" ExtensionBundleId="junket.automation.panel" ExtensionBundleVersion="1.0.0" ExtensionBundleName="junket.automation.panel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ExtensionManifest Version="6.0" ExtensionBundleId="com.pmafilmtv.junketAutomationPanel" ExtensionBundleVersion="1.0.0" ExtensionBundleName="com.pmafilmtv.junketAutomationPanel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="junket.automation.panel" Version="1.0" />
+		<Extension Id="com.pmafilmtv.junketAutomationPanel" Version="1.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
-			<Host Name="PPRO" Version="11.0" />
+			<Host Name="PPRO" Version="[11.0,23.0]" />
 		</HostList>
 		<LocaleList>
 			<Locale Code="All" />
 		</LocaleList>
 		<RequiredRuntimeList>
-			<RequiredRuntime Name="CSXS" Version="9.0" />
+			<RequiredRuntime Name="CSXS" Version="[9.0,12.0]" />
 		</RequiredRuntimeList>
 	</ExecutionEnvironment>
 
 	<DispatchInfoList>
-		<Extension Id="junket.automation.panel">
+		<Extension Id="com.pmafilmtv.junketAutomationPanel">
 			<DispatchInfo >
 				<Resources>
 					<MainPath>./index.html</MainPath>
@@ -24,7 +24,6 @@
 					<CEFCommandLine>
 						<Parameter>--allow-file-access</Parameter>
 						<Parameter>--allow-file-access-from-files</Parameter>
-						<Parameter>--enable-nodejs</Parameter>
 					</CEFCommandLine>
 				</Resources>
 				<Lifecycle>
@@ -35,8 +34,8 @@
 					<Menu>Junket Skinning Automation</Menu>
 					<Geometry>
 						<Size>
-							<Height>300</Height>
-							<Width>300</Width>
+							<Height>700</Height>
+							<Width>500</Width>
 						</Size>
 					</Geometry>
 				</UI>

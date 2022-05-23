@@ -69,6 +69,77 @@ function composite(numberOfWindows, positionArray) {
         }
     }
 
+    switch (numberOfWindows) {
+        case 1:
+            var positionArray1 = [positionArray['x_1_1'], positionArray['y_1_1'], positionArray['s_1_1']];
+            for (var i = 0; i < positionArray1.length; i++) {
+                if (positionArray1[i] == 0) {
+                    alert('None of the position or scale values should be zero', 'Error', true);
+                    return;
+                }
+            }
+            break;
+        case 2:
+            var positionArray2 = [
+                positionArray['x_2_1'],
+                positionArray['y_2_1'],
+                positionArray['s_2_1'],
+                positionArray['x_2_2'],
+                positionArray['y_2_2'],
+                positionArray['s_2_2']
+            ];
+            for (var i = 0; i < positionArray2.length; i++) {
+                if (positionArray2[i] == 0) {
+                    alert('None of the position or scale values should be zero', 'Error', true);
+                    return;
+                }
+            }
+            break;
+        case 3:
+            var positionArray3 = [
+                positionArray['x_3_1'],
+                positionArray['y_3_1'],
+                positionArray['s_3_1'],
+                positionArray['x_3_2'],
+                positionArray['y_3_2'],
+                positionArray['s_3_2'],
+                positionArray['x_3_3'],
+                positionArray['y_3_3'],
+                positionArray['s_3_3'],
+            ];
+            for (var i = 0; i < positionArray3.length; i++) {
+                if (positionArray3[i] == 0) {
+                    alert('None of the position or scale values should be zero', 'Error', true);
+                    return;
+                }
+            }
+            break;
+        case 4:
+            var positionArray3 = [
+                positionArray['x_4_1'],
+                positionArray['y_4_1'],
+                positionArray['s_4_1'],
+                positionArray['x_4_2'],
+                positionArray['y_4_2'],
+                positionArray['s_4_2'],
+                positionArray['x_4_3'],
+                positionArray['y_4_3'],
+                positionArray['s_4_3'],
+                positionArray['x_4_4'],
+                positionArray['y_4_4'],
+                positionArray['s_4_4']
+            ];
+            for (var i = 0; i < positionArray3.length; i++) {
+                if (positionArray3[i] == 0) {
+                    alert('None of the position or scale values should be zero', 'Error', true);
+                    return;
+                }
+            }
+            break;
+        default:
+            alert('Unsupported number of windows', 'Error', true);
+    }
+
     if (activeSeq.videoTracks[0].clips.numItems < numberOfWindows) {
         alert('Not enough clips on the timeline', 'Not Enough Clips', true);
         return;
@@ -161,6 +232,7 @@ function composite(numberOfWindows, positionArray) {
         activeSeq.videoTracks[numberOfWindows].overwriteClip(skin, 0);
     } else {
         alert('Skin not found', 'Skin Not Found', true);
+        return;
     }
 
     alert('Compositing complete!\nMake sure to check it\'s in sync!', 'Junket Skinning Automation');
